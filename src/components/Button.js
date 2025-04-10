@@ -9,6 +9,7 @@ export default function Button({ title, variant = 'default', onPress }) {
 /* COMENTÁRIO DE URIEL : 
 " ? " é parte do operador ternário
 (condição ? valorSeVerdadeiro : valorSeFalso) 
+    SE    ?     FAÇA      SENAO:     FAÇA
 é uma forma curta de escrever um if / else.*/
   
   return (
