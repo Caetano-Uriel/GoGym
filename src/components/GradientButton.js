@@ -1,13 +1,19 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import React from "react";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
-export default function GradientButton({ icon, label, variant = 'default', onPress }) {
-  const gradientColors = variant === 'default'
-    ? ['#fca311', '#ffba08']
-    : variant === 'cool'
-    ? ['#00c6ff', '#0072ff']
-    : ['#fca311', '#ffba08']; // fallback
+export default function GradientButton({
+  icon,
+  label,
+  variant = "default",
+  onPress,
+}) {
+  const gradientColors =
+    variant === "default"
+      ? ["#fca311", "#ffba08"]
+      : variant === "cool"
+      ? ["#00c6ff", "#0072ff"]
+      : ["#fca311", "#ffba08"]; // fallback
 
   return (
     <TouchableOpacity style={styles.buttonWrapper} onPress={onPress}>
@@ -21,18 +27,18 @@ export default function GradientButton({ icon, label, variant = 'default', onPre
 
 const styles = StyleSheet.create({
   buttonWrapper: {
-    width: '47%',
+    width: "47%",
   },
   button: {
     borderRadius: 12,
     padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     gap: 10,
   },
   buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

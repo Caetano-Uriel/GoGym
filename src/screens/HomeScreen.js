@@ -1,13 +1,12 @@
-import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import GradientButton from '../components/GradientButton';
-import { styles } from '../styles/homeStyles';
+import React from "react";
+import { View, Text, ScrollView } from "react-native";
+import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import GradientButton from "../components/GradientButton";
+import { styles } from "../styles/homeStyles";
 
 export default function HomeScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Ionicons name="person-circle" size={24} color="white" />
         <Text style={styles.welcomeText}>
@@ -15,14 +14,14 @@ export default function HomeScreen() {
         </Text>
       </View>
 
-      {/* Info box */}
       <View style={styles.treinoBox}>
         <Text style={styles.treinoText}>Último treino: Peito e Tríceps</Text>
         <Text style={styles.treinoText}>Calorias Queimadas: 450 kcal</Text>
-        <Text style={styles.treinoText}>Meta do dia: Completar 3 exercícios</Text>
+        <Text style={styles.treinoText}>
+          Meta do dia: Completar 3 exercícios
+        </Text>
       </View>
 
-      {/* Botões */}
       <View style={styles.buttonsContainer}>
         <GradientButton
           icon={<FontAwesome5 name="dumbbell" size={24} color="white" />}
@@ -42,7 +41,6 @@ export default function HomeScreen() {
         />
       </View>
 
-      {/* Desafio */}
       <View style={styles.desafioBox}>
         <Text style={styles.desafioText}>
           ✨ Novo Desafio: Quem treina mais essa semana?
