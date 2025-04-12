@@ -1,33 +1,33 @@
 import { StyleSheet } from 'react-native';
-
-export default StyleSheet.create({
-  loginButton: {
-    height: 48,
-    backgroundColor: '#2E8B57',
-    borderRadius: 8,
-    justifyContent: 'center',
+const styles = StyleSheet.create({
+  buttonBase: {
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    borderRadius: 10,
     alignItems: 'center',
-    marginBottom: 12,
-    width: '100%',
-    marginTop: 20,
+    gap: 6,
   },
-  loginButtonText: {
+  buttonText: {
     color: '#fff',
-    fontSize: 16,
     fontWeight: 'bold',
+    textAlign: 'center',
   },
-  googleButton: {
-    height: 48,
-    backgroundColor: '#DB4437',
-    borderRadius: 8,
-    justifyContent: 'center',
+  defaultButton: {
+    backgroundColor: '#555',
+  },
+  primaryButton: {
+    backgroundColor: '#007bff',
+  },
+  secondaryButton: {
+    backgroundColor: '#6c757d',
+  },
+  gradientButton: {
+    padding: 20,
+    borderRadius: 12,
     alignItems: 'center',
-    marginBottom: 12,
+    gap: 8,
+  },
+  buttonWrapper: {
     width: '100%',
-  },
-  googleButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
+  }
 });
