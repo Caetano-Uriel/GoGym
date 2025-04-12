@@ -6,7 +6,7 @@ import RegisterScreen from "./src/screens/RegisterScreen.js";
 import HomeScreen from "./src/screens/HomeScreen.js";
 
 export default function App() {
-  //return <LoginScreen />;
+  return <LoginScreen />;
   return <RegisterScreen/>;
   //return <HomeScreen/>;
 }
