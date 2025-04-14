@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import Input from '../components/Input';
-import Button from '../components/Button';
 import styles from '../styles/loginStyle'; 
-
+import Button from '../components/Button';
 /* COMENTÁRIO DE URIEL : 
 - LEMBRAR DE TIRAR DÚVIDA COM O PROFESSOR:
 SERIA VIAVEL CRIAR UM NOVO STYLE PARA O REGISTER SCREEN? OU POSSO REUTILIZAR O DE LOGIN? */
@@ -24,7 +23,7 @@ export default function RegisterScreen() {
         <Input label="Confirmar Senha" placeholder="Confirme sua senha" secureTextEntry />
 
         <Button title="Cadastrar" onPress={() => console.log('Cadastro enviado')} />
-        <Button title="Cadastrar com Google" variant="google" />
+        <Button title="Cadastrar com Google" variant="roxo" />
 
          <Text style={styles.registerText}>
                   Ja tem uma conta? <Text style={styles.registerLink}>Fazer login</Text>

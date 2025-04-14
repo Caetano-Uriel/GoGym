@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
-import GradientButton from "../components/GradientButton";
+import GradientButton from "../components/Button";
 import { styles } from "../styles/homeStyles";
 
 export default function HomeScreen() {

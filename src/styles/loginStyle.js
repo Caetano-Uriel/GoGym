@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   background: {
+    paddingTop:190,
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",

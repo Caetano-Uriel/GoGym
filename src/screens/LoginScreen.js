@@ -2,8 +2,7 @@ import React from "react";
 import { View, Text, ImageBackground } from "react-native";
 import styles from "../styles/loginStyle";
 import Input from "../components/Input";
-import Button from "../components/Button";
-import GradientButton from "../components/GradientButton";
+import GradientButton from "../components/Button";
 
 export default function LoginScreen() {
   return (
@@ -16,9 +15,8 @@ export default function LoginScreen() {
 
         <Input label="E-mail:" placeholder="Digite seu e-mail" />
         <Input label="Senha:" placeholder="Digite sua senha" secureTextEntry />
-        <GradientButton title="Entrar" variant="cool" />
-        <Button title="Entrar" variant="default" />
-        <Button title="Entrar com Google" variant="google" />
+        <GradientButton title="Entrar" />
+        <GradientButton title="Entrar com Google" variant="roxo" />
 
         <Text style={styles.registerText}>
           Não tem uma conta?{" "}

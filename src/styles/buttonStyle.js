@@ -32,7 +32,7 @@ export default StyleSheet.create({
   // Botão de login
   loginButton: {
     height: 48,
-    backgroundColor: '#2E8B57',
+    backgroundColor: '#f8da11',
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -49,7 +49,7 @@ export default StyleSheet.create({
   // Botão Google
   googleButton: {
     height: 48,
-    backgroundColor: '#DB4437',
+    backgroundColor: '#6110cc',
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
