@@ -46,22 +46,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  // Botão Google
-  googleButton: {
-    height: 48,
-    backgroundColor: '#6110cc',
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 12,
-    width: '100%',
-  },
-  googleButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-
   // Botão com gradiente
   gradientButtonWrapper: {
     width: "47%",
@@ -72,5 +56,28 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
+    margin:10
   },
+  bordaBrancaWrapper: {
+    borderWidth: 2,
+    borderColor: "#fff",
+    borderRadius: 12,
+    margin: 30,
+  },
+  bordaBrancaButton: {
+    backgroundColor: "#000",
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
+  },
+  bordaBrancaText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginLeft: 10,
+  },
+  
 });

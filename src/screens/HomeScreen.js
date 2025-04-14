@@ -18,25 +18,25 @@ export default function HomeScreen() {
         <Text style={styles.treinoTitle}>Último treino</Text>
         <Text style={styles.treinoText}>🏋️ Peito e Tríceps</Text>
         <Text style={styles.treinoText}>🔥 450 kcal queimadas</Text>
-        <Text style={styles.treinoText}>🎯 Meta do dia: 3 exercícios</Text>
+        {/* <Text style={styles.treinoText}>🎯 Meta do dia: 3 exercícios</Text> */}
       </View>
 
       <View style={styles.buttonsContainer}>
         <GradientButton
           icon={<FontAwesome5 name="dumbbell" size={24} color="white" />}
-          label="Começar Treino"
+          title="Começar Treino" variant="roxo"
         />
         <GradientButton
           icon={<Ionicons name="bar-chart" size={24} color="white" />}
-          label="Estatísticas"
+          title="Ranking" variant="roxo"
         />
         <GradientButton
           icon={<Ionicons name="people" size={24} color="white" />}
-          label="Amigos"
+          title="Amigos"
         />
         <GradientButton
           icon={<MaterialIcons name="restaurant" size={24} color="white" />}
-          label="Dieta"
+          title="Dieta" 
         />
       </View>
 

@@ -8,5 +8,6 @@ import HomeScreen from "./src/screens/HomeScreen.js";
 export default function App() {
   //return <LoginScreen />;
   //return <RegisterScreen/>;
-    return <HomeScreen/>;
+  return <HomeScreen/>;
+  //return <FiendsScreen/>
 }
