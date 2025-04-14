@@ -8,18 +8,17 @@ export default function HomeScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <Ionicons name="person-circle" size={24} color="white" />
+        <Ionicons name="person-circle" size={32} color="white" />
         <Text style={styles.welcomeText}>
-          Bem-vindo, <Text style={styles.username}>@user</Text>! 💪
+          Olá, <Text style={styles.username}>@user</Text>! 💪
         </Text>
       </View>
 
       <View style={styles.treinoBox}>
-        <Text style={styles.treinoText}>Último treino: Peito e Tríceps</Text>
-        <Text style={styles.treinoText}>Calorias Queimadas: 450 kcal</Text>
-        <Text style={styles.treinoText}>
-          Meta do dia: Completar 3 exercícios
-        </Text>
+        <Text style={styles.treinoTitle}>Último treino</Text>
+        <Text style={styles.treinoText}>🏋️ Peito e Tríceps</Text>
+        <Text style={styles.treinoText}>🔥 450 kcal queimadas</Text>
+        <Text style={styles.treinoText}>🎯 Meta do dia: 3 exercícios</Text>
       </View>
 
       <View style={styles.buttonsContainer}>
