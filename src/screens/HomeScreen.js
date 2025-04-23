@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
-import GradientButton from "../components/Button";
+import Button from "../components/Button";
 import { styles } from "../styles/homeStyles";
 
 export default function HomeScreen() {
@@ -22,21 +22,23 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.buttonsContainer}>
-        <GradientButton
+        <Button
           icon={<FontAwesome5 name="dumbbell" size={24} color="white" />}
-          title="Começar Treino" variant="roxo"
+          title="Treino"
         />
-        <GradientButton
+        <Button
           icon={<Ionicons name="bar-chart" size={24} color="white" />}
-          title="Ranking" variant="roxo"
+          title="Ranking"
+          variant="roxo"
         />
-        <GradientButton
+        <Button
           icon={<Ionicons name="people" size={24} color="white" />}
           title="Amigos"
+          variant="roxo"
         />
-        <GradientButton
+        <Button
           icon={<MaterialIcons name="restaurant" size={24} color="white" />}
-          title="Dieta" 
+          title="Dieta"
         />
       </View>
 

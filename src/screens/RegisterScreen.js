@@ -34,6 +34,7 @@ export default function RegisterScreen() {
         />
 
         <Button
+          variant="roxo"
           title="Cadastrar"
           onPress={() => console.log("Cadastro enviado")}
         />

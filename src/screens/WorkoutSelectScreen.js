@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { styles } from "../styles/treinoSelecionadoStyles";
+import { styles } from "../styles/workoutSelectStyles";
 
-export default function TreinoSelecionadoScreen() {
+export default function WorkoutSelectScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Hipertrofia</Text>

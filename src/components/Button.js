@@ -11,20 +11,16 @@ export default function GradientButton({
 }) {
   const isBordaBranca = variant === "bordaBranca";
 
-  const gradientColors =
-    variant === "default"
-      ? ["#fca311", "#ffba08"]
-      : variant === "azul"
-      ? ["#00c6ff", "#0072ff"]
-      : variant === "amarelo"
-      ? ["#ffeb3b", "#fbc02d"]
-      : variant === "rosa"
-      ? ["#ff6f91", "#ff9472"]
-      : variant === "roxo"
-      ? ["#620ea7ce", "#620ea7ce"]
-      : variant === "verde"
-      ? ["#32CD32", "#228B22"]
-      : ["#fca311", "#ffba08"]; // fallback
+  const variants = {
+    "default" : ["#fca311", "#ffba08"],
+    "azul" : ["#00c6ff", "#0072ff"],
+    "amarelo" : ["#ffeb3b", "#fbc02d"],
+    "rosa" : ["#ff6f91", "#ff9472"],
+    "roxo" : ["#620ea7ce", "#620ea7ce"],
+    "verde" : ["#32CD32", "#228B22"]
+  }
+
+  const gradientColors = variants[variant]
 
   return (
     <TouchableOpacity

@@ -15,15 +15,14 @@ export default function LoginScreen() {
 
         <Input label="E-mail:" placeholder="Digite seu e-mail" />
         <Input label="Senha:" placeholder="Digite sua senha" secureTextEntry />
-        <Button title="Entrar" variant="verde"/>
+        <Button title="Entrar" variant="verde" />
 
         <Text style={styles.registerText}>
           Não tem uma conta?{" "}
           <Text style={styles.registerLink}>Criar conta</Text>
         </Text>
       </View>
-        <Button title="Entrar com Google" variant="bordaBranca" />
-      
+      <Button title="Entrar com Google" variant="bordaBranca" />
     </ImageBackground>
   );
 }

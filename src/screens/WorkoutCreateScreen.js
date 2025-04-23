@@ -1,30 +1,34 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { styles } from "../styles/criarTreinoStyles";
+import { styles } from "../styles/workoutCreateStyles";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function CriarTreinoScreen() {
+// Lista de aparelhos
+const aparelhos = [
+  { nome: "Esteira", icone: "fitness", selecionado: false },
+  { nome: "Leg Press", icone: "barbell", selecionado: true },
+  { nome: "Remada Curvada", icone: "walk", selecionado: true },
+  { nome: "Remada Curvada", icone: "walk", selecionado: true },
+  { nome: "Remada Curvada", icone: "walk", selecionado: false },
+];
+
+export default function WorkoutCreateScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Selecione os aparelhos</Text>
 
-      <View style={styles.item}>
-        <Ionicons name="fitness" size={24} color="white" />
-        <Text style={styles.itemText}>Esteira</Text>
-        <TouchableOpacity style={styles.checkbox} />
-      </View>
+      {/* map para renderizar os aparelhos */}
+      {aparelhos.map((item, index) => (
+        <View key={index} style={styles.item}>
+          <Ionicons name={item.icone} size={24} color="white" />
+          <Text style={styles.itemText}>{item.nome}</Text>
 
-      <View style={styles.item}>
-        <Ionicons name="barbell" size={24} color="white" />
-        <Text style={styles.itemText}>Leg Press</Text>
-        <TouchableOpacity style={styles.checkboxSelected} />
-      </View>
-
-      <View style={styles.item}>
-        <Ionicons name="walk" size={24} color="white" />
-        <Text style={styles.itemText}>Remada Curvada</Text>
-        <TouchableOpacity style={styles.checkboxSelected} />
-      </View>
+          {/* Condicional para mostrar o checkbox certo */}
+          <TouchableOpacity
+            style={item.selecionado ? styles.checkboxSelected : styles.checkbox}
+          />
+        </View>
+      ))}
 
       <TouchableOpacity style={styles.botao}>
         <Text style={styles.botaoTexto}>Criar</Text>
