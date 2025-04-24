@@ -11,7 +11,8 @@ import WorkoutCreateScreen from "./src/screens/WorkoutCreateScreen.js"
 export default function App() {
   //return <LoginScreen />;
   //return <RegisterScreen/>;
-  //return <HomeScreen/>;
+  return <HomeScreen/>;
   //return <FriendsScreen/>
+  //return <WorkoutSelectScreen/>
   return <WorkoutCreateScreen/>
 }
