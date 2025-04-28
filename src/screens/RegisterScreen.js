@@ -2,18 +2,11 @@ import React from "react";
 import {
   View,
   Text,
-  TextInput,
-  TouchableOpacity,
   ImageBackground,
 } from "react-native";
 import Input from "../components/Input";
 import styles from "../styles/loginStyle";
 import Button from "../components/Button";
-/* COMENTÁRIO DE URIEL : 
-- LEMBRAR DE TIRAR DÚVIDA COM O PROFESSOR:
-SERIA VIAVEL CRIAR UM NOVO STYLE PARA O REGISTER SCREEN? OU POSSO REUTILIZAR O DE LOGIN?
-  EU DIEGO TO CRIANDO 1 PRA CADA MAS SE FOR POSSIVEL REUTILIZAR VOU TER FEITO MT COISA ATOA
-*/
 
 export default function RegisterScreen() {
   return (

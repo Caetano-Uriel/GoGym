@@ -1,40 +1,59 @@
 import React from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { styles } from "../styles/workoutSelectStyles";
+import Button from "../components/Button";
+import { useNavigation } from "@react-navigation/native";
+import {BackButton} from '../components/BackButton';
+
+
+
+const treinos = [
+  { id: "1", nome: "Treino A", detalhes: "Peito e Tríceps" },
+  { id: "2", nome: "Treino B", detalhes: "Costas e Bíceps" },
+  { id: "3", nome: "Treino C", detalhes: "Pernas e Ombros" },
+];
 
 export default function WorkoutSelectScreen() {
+  const navigation = useNavigation();
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
+      {/* Botão de voltar */}
+      <View style={styles.topBar}>
+      <Button
+  icon={<BackButton/>}
+  variant="iconOnly"
+  onPress={() => navigation.navigate('Home')}
+/>
+      </View>
+
       <Text style={styles.title}>Hipertrofia</Text>
 
-      <View style={styles.card}>
-        <Text style={styles.nomeTreino}>Treino A</Text>
-        <Text style={styles.detalhes}>Peito e Tríceps</Text>
-        <TouchableOpacity style={styles.botao}>
-          <Text style={styles.botaoTexto}>Iniciar</Text>
-        </TouchableOpacity>
-      </View>
+      {/* FlatList para treinos */}
+      <FlatList
+        data={treinos}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContainer}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Text style={styles.nomeTreino}>{item.nome}</Text>
+            <Text style={styles.detalhes}>{item.detalhes}</Text>
+            <Button title="Iniciar" variant="default" onPress={() => {}} />
+          </View>
+        )}
+        showsVerticalScrollIndicator={false}
+      />
 
-      <View style={styles.card}>
-        <Text style={styles.nomeTreino}>Treino B</Text>
-        <Text style={styles.detalhes}>Costas e Bíceps</Text>
-        <TouchableOpacity style={styles.botao}>
-          <Text style={styles.botaoTexto}>Iniciar</Text>
-        </TouchableOpacity>
+      {/* Parte de baixo - tempo e botão de troca */}
+      <View style={styles.footer}>
+        <Text style={styles.timer}>Tempo: 60s</Text>
+        <Button 
+          title="Trocar Tempo" 
+          variant="default" 
+          onPress={() => {}} 
+          style={styles.trocarTempoBtn}
+        />
       </View>
-
-      <View style={styles.card}>
-        <Text style={styles.nomeTreino}>Treino C</Text>
-        <Text style={styles.detalhes}>Pernas e Ombros</Text>
-        <TouchableOpacity style={styles.botao}>
-          <Text style={styles.botaoTexto}>Iniciar</Text>
-        </TouchableOpacity>
-      </View>
-
-      <Text style={styles.timer}>Tempo: 60s</Text>
-      <TouchableOpacity style={styles.trocarTempoBtn}>
-        <Text style={styles.trocarTempoText}>Trocar Tempo</Text>
-      </TouchableOpacity>
-    </ScrollView>
+    </View>
   );
 }

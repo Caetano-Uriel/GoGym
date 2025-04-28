@@ -1,57 +1,52 @@
 import { StyleSheet } from "react-native";
-
 export const styles = StyleSheet.create({
   container: {
-    paddingTop:100,
-    padding: 20,
+    flex: 1,
     backgroundColor: "#1a1a1a",
-    flexGrow: 1,
+    paddingHorizontal: 20,
+    paddingTop: 40,
+  },
+  topBar: {
+    marginBottom: 20,
   },
   title: {
-    paddingBottom:20,
-    fontSize: 18,
     color: "#fff",
+    fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 15,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  listContainer: {
+    paddingBottom: 20,
   },
   card: {
     backgroundColor: "#2a2a2a",
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 16,
+    borderRadius: 10,
+    padding: 20,
+    marginBottom: 15,
   },
   nomeTreino: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
+    marginBottom: 5,
   },
   detalhes: {
-    color: "#ccc",
-    marginVertical: 5,
-  },
-  botao: {
-    backgroundColor: "#FFA500",
-    borderRadius: 8,
-    paddingVertical: 10,
-    alignItems: "center",
-    marginTop: 10,
-  },
-  botaoTexto: {
-    color: "#000",
-    fontWeight: "bold",
+    color: "#aaa",
+    fontSize: 14,
+    marginBottom: 10,
   },
   timer: {
     color: "#fff",
+    fontSize: 18,
     textAlign: "center",
     marginTop: 20,
   },
-  trocarTempoBtn: {
-    alignSelf: "center",
-    marginTop: 8,
-    padding: 8,
+  footer: {
+    marginTop: 20,
+    alignItems: "center",
   },
-  trocarTempoText: {
-    color: "#FFA500",
-    fontSize: 14,
+  trocarTempoBtn: {
+    marginTop: 10,
   },
 });

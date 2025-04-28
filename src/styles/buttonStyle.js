@@ -32,18 +32,18 @@ export default StyleSheet.create({
   // Botão de login
   loginButton: {
     height: 48,
-    backgroundColor: '#f8da11',
+    backgroundColor: "#f8da11",
     borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 12,
-    width: '100%',
+    width: "100%",
     marginTop: 20,
   },
   loginButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 
   // Botão com gradiente
@@ -56,7 +56,7 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
-    margin:10
+    margin: 10,
   },
   bordaBrancaWrapper: {
     borderWidth: 2,
@@ -79,5 +79,4 @@ export default StyleSheet.create({
     fontSize: 16,
     marginLeft: 10,
   },
-  
 });

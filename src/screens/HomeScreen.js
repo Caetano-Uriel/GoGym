@@ -1,11 +1,16 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
-import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons";// quero parar de usar isso se possivel
 import Button from "../components/Button";
 import { styles } from "../styles/homeStyles";
+import { useNavigation } from '@react-navigation/native';
 
+// Dentro do seu componente:
 export default function HomeScreen() {
+const navigation = useNavigation();
+
   return (
+    
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Ionicons name="person-circle" size={32} color="white" />

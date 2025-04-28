@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  FlatList,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import { View, Text, TextInput, FlatList, Image } from "react-native";
 import { styles } from "../styles/friendsStyles";
 import Button from "../components/Button";
 import { Feather } from "@expo/vector-icons";
