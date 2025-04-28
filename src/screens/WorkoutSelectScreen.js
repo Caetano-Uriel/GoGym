@@ -3,9 +3,6 @@ import { View, Text, FlatList } from "react-native";
 import { styles } from "../styles/workoutSelectStyles";
 import Button from "../components/Button";
 import { useNavigation } from "@react-navigation/native";
-import {BackButton} from '../components/BackButton';
-
-
 
 const treinos = [
   { id: "1", nome: "Treino A", detalhes: "Peito e Tríceps" },
@@ -18,16 +15,6 @@ export default function WorkoutSelectScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Botão de voltar */}
-      <View style={styles.topBar}>
-      <Button
-  icon={<BackButton/>}
-  variant="iconOnly"
-  onPress={() => navigation.navigate('Home')}
-/>
-      </View>
-
-      <Text style={styles.title}>Hipertrofia</Text>
 
       {/* FlatList para treinos */}
       <FlatList
@@ -47,10 +34,10 @@ export default function WorkoutSelectScreen() {
       {/* Parte de baixo - tempo e botão de troca */}
       <View style={styles.footer}>
         <Text style={styles.timer}>Tempo: 60s</Text>
-        <Button 
-          title="Trocar Tempo" 
-          variant="default" 
-          onPress={() => {}} 
+        <Button
+          title="Trocar Tempo"
+          variant="default"
+          onPress={() => {}}
           style={styles.trocarTempoBtn}
         />
       </View>

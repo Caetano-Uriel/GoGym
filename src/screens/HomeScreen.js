@@ -30,6 +30,7 @@ const navigation = useNavigation();
         <Button
           icon={<FontAwesome5 name="dumbbell" size={24} color="white" />}
           title="Treino"
+          onPress={() => navigation.navigate("WorkoutSelect")}
         />
         <Button
           icon={<Ionicons name="bar-chart" size={24} color="white" />}

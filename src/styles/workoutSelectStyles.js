@@ -5,10 +5,19 @@ export const styles = StyleSheet.create({
     backgroundColor: "#1a1a1a",
     paddingHorizontal: 20,
     paddingTop: 40,
+  },topBar: {
+    flexDirection: 'row', // Ícone e texto lado a lado
+    alignItems: 'center', // Alinha eles verticalmente
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
-  topBar: {
-    marginBottom: 20,
+  pageTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    marginLeft: 12, // espaço entre o ícone e o texto
   },
+  
   title: {
     color: "#fff",
     fontSize: 24,
