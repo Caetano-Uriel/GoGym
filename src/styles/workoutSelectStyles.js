@@ -2,60 +2,72 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1a1a1a",
-    paddingHorizontal: 20,
-    paddingTop: 40,
-  },topBar: {
-    flexDirection: 'row', // Ícone e texto lado a lado
-    alignItems: 'center', // Alinha eles verticalmente
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  pageTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-    marginLeft: 12, // espaço entre o ícone e o texto
-  },
-  
-  title: {
-    color: "#fff",
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  listContainer: {
-    paddingBottom: 20,
-  },
-  card: {
-    backgroundColor: "#2a2a2a",
-    borderRadius: 10,
+    backgroundColor: "#111",
     padding: 20,
-    marginBottom: 15,
   },
-  nomeTreino: {
+  title: {
+    fontSize: 24,
     color: "#fff",
-    fontSize: 18,
+    marginBottom: 16,
     fontWeight: "bold",
-    marginBottom: 5,
   },
-  detalhes: {
-    color: "#aaa",
-    fontSize: 14,
+  itemContainer: {
+    backgroundColor: "#222",
+    padding: 16,
+    borderRadius: 10,
     marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  timer: {
+  itemText: {
     color: "#fff",
     fontSize: 18,
-    textAlign: "center",
-    marginTop: 20,
+    flex: 1,
   },
-  footer: {
-    marginTop: 20,
+  buttons: {
+    flexDirection: "row",
+  },
+  arrowButton: {
+    backgroundColor: "#444",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 5,
+    marginLeft: 8,
+  },
+  arrowText: {
+    color: "#fff",
+    fontSize: 18,
+  },
+  newButton: {
+    backgroundColor: "#6C63FF",
+    padding: 16,
+    borderRadius: 10,
     alignItems: "center",
+    marginTop: 20,
   },
-  trocarTempoBtn: {
-    marginTop: 10,
+  newButtonTitle: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  itemContainer: {
+    backgroundColor: "#222",
+    padding: 16,
+    borderRadius: 10,
+    marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  itemText: {
+    color: "#fff",
+    fontSize: 18,
+    flex: 1,
+  },
+  buttonGroup: {
+    flexDirection: "row",
+    gap: 10, // caso gap não funcione em seu RN, use marginLeft em cada botão
+    justifyContent: "flex-end",
   },
 });

@@ -1,16 +1,15 @@
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
-import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons";// quero parar de usar isso se possivel
+import { Ionicons, FontAwesome5, MaterialIcons } from "@expo/vector-icons"; // quero parar de usar isso se possivel
 import Button from "../components/Button";
 import { styles } from "../styles/homeStyles";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 // Dentro do seu componente:
 export default function HomeScreen() {
-const navigation = useNavigation();
+  const navigation = useNavigation();
 
   return (
-    
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Ionicons name="person-circle" size={32} color="white" />
@@ -36,15 +35,18 @@ const navigation = useNavigation();
           icon={<Ionicons name="bar-chart" size={24} color="white" />}
           title="Ranking"
           variant="roxo"
+          onPress={() => navigation.navigate("Ranking")}
         />
         <Button
           icon={<Ionicons name="people" size={24} color="white" />}
           title="Amigos"
           variant="roxo"
+          onPress={() => navigation.navigate("Friends")}
         />
         <Button
           icon={<MaterialIcons name="restaurant" size={24} color="white" />}
           title="Dieta"
+          onPress={() => navigation.navigate("Diet")}
         />
       </View>
 
