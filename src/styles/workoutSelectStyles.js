@@ -67,7 +67,11 @@ export const styles = StyleSheet.create({
   },
   buttonGroup: {
     flexDirection: "row",
-    gap: 10, // caso gap não funcione em seu RN, use marginLeft em cada botão
+    //gap: 10, // caso gap não funcione em seu RN, use marginLeft em cada botão
     justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  buttonInGroup: {
+    marginLeft: 8,
   },
 });
