@@ -22,6 +22,19 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
     justifyContent: "space-between",
   },
+  subtitle: {
+    color: "#fff",
+    fontSize: 16,
+    marginBottom: 10,
+  },input: {
+    width: "100%",
+    height: 48,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    backgroundColor: "#1f1f1f",
+    color: "#fff",
+    fontSize: 16,
+  },
   itemText: {
     color: "#fff",
     fontSize: 16,

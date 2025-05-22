@@ -15,7 +15,7 @@ export default function LoginScreen() {
 
         <Input label="E-mail:" placeholder="Digite seu e-mail" />
         <Input label="Senha:" placeholder="Digite sua senha" secureTextEntry />
-        <Button title="Entrar" variant="verde" />
+        <Button title="Entrar" variant="roxo" />
 
         <Text style={styles.registerText}>
           Não tem uma conta?{" "}

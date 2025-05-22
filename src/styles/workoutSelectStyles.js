@@ -74,4 +74,10 @@ export const styles = StyleSheet.create({
   buttonInGroup: {
     marginLeft: 8,
   },
+  emptyListText:{
+    color: "#fff",
+    fontSize: 20,
+    margin: 20,
+
+  }
 });
