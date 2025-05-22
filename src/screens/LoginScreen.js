@@ -7,7 +7,7 @@ import Button from "../components/Button";
 export default function LoginScreen() {
   return (
     <ImageBackground
-      source={require("../../assets/background.png")}
+      source={require("../../assets/logo.png")}
       style={styles.background}
     >
       <View style={styles.container}>

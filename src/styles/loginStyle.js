@@ -1,12 +1,17 @@
 import { StyleSheet } from "react-native";
+import { ImageBackground } from "react-native-web";
 
 export default StyleSheet.create({
+  topImage:{
+    marginTop: 20, 
+    resizeMode: "contain",
+  },
+  
   background: {
-    paddingTop: 190,
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
+    backgroundColor: "#000000",
     alignItems: "center",
+    justifyContent: "center",
   },
   container: {
     width: "85%",
