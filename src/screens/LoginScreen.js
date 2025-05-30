@@ -1,10 +1,28 @@
-import React from "react";
-import { View, Text, ImageBackground } from "react-native";
+// LoginScreen.js
+import React, { useState, useContext } from "react";
+import { View, Text, ImageBackground, Alert, TouchableOpacity } from "react-native";
 import styles from "../styles/loginStyle";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { supabase } from "../../supabase";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LoginScreen() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const navigation = useNavigation();
+
+  const handleLogin = async () => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password: senha,
+    });
+
+    if (error) {
+      Alert.alert("Erro", error.message);
+    }
+  };
+
   return (
     <ImageBackground
       source={require("../../assets/logo.png")}
@@ -13,13 +31,29 @@ export default function LoginScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>LOGIN</Text>
 
-        <Input label="E-mail:" placeholder="Digite seu e-mail" />
-        <Input label="Senha:" placeholder="Digite sua senha" secureTextEntry />
-        <Button title="Entrar" variant="roxo" />
+        <Input
+          label="E-mail:"
+          placeholder="Digite seu e-mail"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <Input
+          label="Senha:"
+          placeholder="Digite sua senha"
+          secureTextEntry
+          value={senha}
+          onChangeText={setSenha}
+        />
+        <Button title="Entrar" variant="roxo" onPress={handleLogin} />
 
         <Text style={styles.registerText}>
           Não tem uma conta?{" "}
-          <Text style={styles.registerLink}>Criar conta</Text>
+          <Text
+            style={styles.registerLink}
+            onPress={() => navigation.navigate("Register")}
+          >
+            Criar conta
+          </Text>
         </Text>
       </View>
       <Button title="Entrar com Google" variant="bordaBranca" />

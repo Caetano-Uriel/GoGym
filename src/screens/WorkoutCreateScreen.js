@@ -11,6 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../styles/workoutCreateStyles";
 import Button from "../components/Button";
+import Navbar from "../components/Navbar"
 
 const EXERCICIOS_DISPONIVEIS = [
   { nome: "Supino", icone: "barbell" },
@@ -80,7 +81,7 @@ export default function WorkoutCreateScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Criar novo treino</Text>
-
+<Navbar/>
       <TextInput
         placeholder="Nome do treino"
         placeholderTextColor="#aaa"
