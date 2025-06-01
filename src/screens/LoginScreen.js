@@ -1,11 +1,18 @@
 // LoginScreen.js
 import React, { useState, useContext } from "react";
-import { View, Text, ImageBackground, Alert, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 import styles from "../styles/loginStyle";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { supabase } from "../../supabase";
 import { useNavigation } from "@react-navigation/native";
+import { TextInput } from "react-native";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -17,6 +24,8 @@ export default function LoginScreen() {
       email,
       password: senha,
     });
+    console.log("Email:", email);
+    console.log("Senha:", senha);
 
     if (error) {
       Alert.alert("Erro", error.message);

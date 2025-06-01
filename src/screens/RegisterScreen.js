@@ -39,7 +39,9 @@ export default function RegisterScreen() {
         />
 
         <Text style={styles.registerText}>
-          Ja tem uma conta? <Text style={styles.registerLink}>Fazer login</Text>
+          
+          Ja tem uma conta? <Text style={styles.registerLink} 
+            onPress={() => navigation.navigate("Register")}>Fazer login</Text>
         </Text>
       </View>
       <Button title="Cadastrar com Google" variant="bordaBranca" />

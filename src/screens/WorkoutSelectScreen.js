@@ -1,28 +1,39 @@
 import React, { useState, useCallback } from "react";
 import { View, Text, FlatList, Alert } from "react-native";
-import Button from "../components/Button"; // Confirme se o caminho está correto
-import { styles } from "../styles/workoutSelectStyles"; // Confirme se o caminho está correto
-import { carregarTreinos, salvarTreinos } from "../storage/workoutStorage"; // Confirme se o caminho está correto
+import Button from "../components/Button";
+import { styles } from "../styles/workoutSelectStyles";
 import { useFocusEffect } from "@react-navigation/native";
+import { supabase } from "../../supabase";
 
 export default function WorkoutSelectScreen({ navigation }) {
   const [workouts, setWorkouts] = useState([]);
 
-  // Função para carregar os treinos
   const fetchWorkouts = async () => {
     console.log("Buscando treinos...");
     try {
-      const data = await carregarTreinos();
-      setWorkouts(data || []); // Garanta que seja um array mesmo se data for null/undefined
+      const { data, error } = await supabase
+        .from("treinos")
+        .select("*")
+        .order("ordem", { ascending: true });
+
+      if (error) {
+        console.error("Erro ao buscar do Supabase:", error);
+        Alert.alert(
+          "Erro",
+          "Não foi possível carregar os treinos do Supabase."
+        );
+        return;
+      }
+
+      setWorkouts(data || []);
       console.log("Treinos carregados:", data);
     } catch (error) {
       console.error("Erro ao carregar treinos:", error);
       Alert.alert("Erro", "Não foi possível carregar os treinos.");
-      setWorkouts([]); // Define como array vazio em caso de erro
+      setWorkouts([]);
     }
   };
 
-  // Hook para carregar os treinos quando a tela ganha foco
   useFocusEffect(
     useCallback(() => {
       fetchWorkouts();
@@ -39,45 +50,67 @@ export default function WorkoutSelectScreen({ navigation }) {
       console.warn("Tentativa de mover item para índice inválido.");
       return;
     }
+
     const newList = [...workouts];
     const item = newList.splice(fromIndex, 1)[0];
     newList.splice(toIndex, 0, item);
-    setWorkouts(newList); // Atualiza UI primeiro
-    try {
-      await salvarTreinos(newList); // Depois persiste
-      console.log("Ordem dos treinos salva.");
-    } catch (error) {
-      console.error("Erro ao salvar a nova ordem dos treinos:", error);
-      Alert.alert("Erro", "Não foi possível salvar a nova ordem dos treinos.");
-      // Opcional: reverter a mudança na UI se a persistência falhar
-      // fetchWorkouts(); // Recarrega os dados originais
-    }
-  };
-  const confirmarExclusao = async (indexToDelete) => {
-    console.log(">>> CONFIRMOU EXCLUSÃO <<<");
-
-    const currentWorkouts = [...workouts];
-    if (indexToDelete < 0 || indexToDelete >= currentWorkouts.length) {
-      console.error("Índice de exclusão inválido dentro de confirmarExclusao");
-      Alert.alert("Erro", "Índice de exclusão inválido.");
-      return;
-    }
-
-    const newList = currentWorkouts.filter((_, idx) => idx !== indexToDelete);
-    console.log("Lista após remoção:", newList);
-
     setWorkouts(newList);
 
     try {
       await salvarTreinos(newList);
-      console.log("✅ Treino excluído e salvo com sucesso!");
+      console.log("Ordem dos treinos salva.");
     } catch (error) {
-      console.error("❌ Erro ao salvar treinos:", error);
+      console.error("Erro ao salvar a nova ordem dos treinos:", error);
+      Alert.alert("Erro", "Não foi possível salvar a nova ordem dos treinos.");
+    }
+  };
+
+  const salvarTreinos = async (novaLista) => {
+    const updates = novaLista.map((treino, index) => ({
+      id: treino.id,
+      ordem: index,
+    }));
+
+    const { error } = await supabase
+      .from("treinos")
+      .upsert(updates, { onConflict: ["id"] });
+
+    if (error) {
+      throw error;
+    }
+  };
+
+  const confirmarExclusao = async (indexToDelete) => {
+    const treino = workouts[indexToDelete];
+    if (!treino || !treino.id) {
+      Alert.alert("Erro", "Não foi possível encontrar o treino para excluir.");
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from("treinos")
+        .delete()
+        .eq("id", treino.id);
+
+      if (error) {
+        console.error("Erro ao excluir treino:", error);
+        Alert.alert("Erro", "Falha ao excluir treino do Supabase.");
+        return;
+      }
+
+      Alert.alert(
+        "Treino excluído!",
+        `O treino "${treino.nome}" foi removido.`
+      );
+      fetchWorkouts();
+    } catch (err) {
+      console.error(err);
+      Alert.alert("Erro", "Erro ao excluir treino.");
     }
   };
 
   const handleDeleteWorkout = (indexToDelete) => {
-    // Log para verificar se a função é chamada e qual o índice
     console.log(`handleDeleteWorkout chamado para o índice: ${indexToDelete}`);
     console.log("Workouts atuais antes da tentativa de exclusão:", workouts);
 
@@ -90,7 +123,7 @@ export default function WorkoutSelectScreen({ navigation }) {
       return;
     }
 
-    const workoutNameToDelete = workouts[indexToDelete]?.nome || "desconhecido"; // Pega o nome para o Alert
+    const workoutNameToDelete = workouts[indexToDelete]?.nome || "desconhecido";
 
     Alert.alert(
       "Excluir Treino",
@@ -119,20 +152,19 @@ export default function WorkoutSelectScreen({ navigation }) {
           variant="reorder"
           onPress={() => moveItem(index, index - 1)}
           disabled={index === 0}
-          // Não precisa de style aqui se for o primeiro, ou adicione para consistência
         />
         <Button
           title="↓"
           variant="reorder"
           onPress={() => moveItem(index, index + 1)}
           disabled={index === workouts.length - 1}
-          style={styles.buttonInGroup} // Adiciona margem
+          style={styles.buttonInGroup}
         />
         <Button
           title="X"
           variant="delete"
           onPress={() => handleDeleteWorkout(index)}
-          style={styles.buttonInGroup} // Adiciona margem
+          style={styles.buttonInGroup}
         />
       </View>
     </View>
@@ -146,29 +178,15 @@ export default function WorkoutSelectScreen({ navigation }) {
       ) : (
         <FlatList
           data={workouts}
-          keyExtractor={(item, index) => item.id || index.toString()} // Idealmente usar um ID único do item
+          keyExtractor={(item, index) => item.id || index.toString()}
           renderItem={renderItem}
         />
       )}
       <Button
-        style={styles.newButton} // Note que 'style' em componentes customizados pode precisar de tratamento especial no componente Button
+        style={styles.newButton}
         title="Novo Treino"
-        onPress={() =>
-          navigation.navigate("WorkoutCreate", {
-            // onSave: setWorkouts // Se WorkoutCreate modificar a lista, é melhor recarregar com fetchWorkouts ou passar uma função que chama fetchWorkouts.
-            // Melhor ainda seria WorkoutCreate chamar salvarTreinos e aqui apenas recarregar com useFocusEffect
-          })
-        }
+        onPress={() => navigation.navigate("WorkoutCreate")}
       />
     </View>
   );
 }
-
-// Adicione um estilo para a lista vazia, se desejar, em workoutSelectStyles.js
-// Exemplo:
-// emptyListText: {
-//   textAlign: 'center',
-//   marginTop: 20,
-//   fontSize: 16,
-//   color: '#666',
-// },

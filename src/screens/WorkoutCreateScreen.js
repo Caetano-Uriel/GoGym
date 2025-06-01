@@ -7,11 +7,11 @@ import {
   FlatList,
   Alert,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../styles/workoutCreateStyles";
 import Button from "../components/Button";
-import Navbar from "../components/Navbar"
+import Navbar from "../components/Navbar";
+import { supabase } from "../../supabase";
 
 const EXERCICIOS_DISPONIVEIS = [
   { nome: "Supino", icone: "barbell" },
@@ -51,17 +51,47 @@ export default function WorkoutCreateScreen({ navigation }) {
       );
     }
 
-    const novoTreino = {
-      nome: nomeTreino,
-      exercicios: selecionados,
-    };
+    // Obtem o usuário logado
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      console.error("Erro ao obter usuário:", userError);
+      return Alert.alert("Erro", "Usuário não autenticado.");
+    }
+
+    // Conta quantos treinos já existem para definir a ordem
+    const { data: treinosExistentes, error: treinosError } = await supabase
+      .from("treinos")
+      .select("id")
+      .eq("user_id", user.id); // ← só os do usuário
+
+    if (treinosError) {
+      console.error("Erro ao buscar treinos existentes:", treinosError);
+      return Alert.alert(
+        "Erro",
+        "Não foi possível contar os treinos existentes."
+      );
+    }
+
+    const ordem = (treinosExistentes?.length || 0) + 1;
 
     try {
-      const dadosSalvos = await AsyncStorage.getItem("treinos");
-      const treinos = dadosSalvos ? JSON.parse(dadosSalvos) : [];
-      const novaLista = [novoTreino, ...treinos];
+      const { error } = await supabase.from("treinos").insert([
+        {
+          nome: nomeTreino,
+          exercicios: selecionados, // array de strings
+          ordem: ordem,
+          user_id: user.id, // ← ESSENCIAL para RLS funcionar
+        },
+      ]);
 
-      await AsyncStorage.setItem("treinos", JSON.stringify(novaLista));
+      if (error) {
+        console.error(error);
+        return Alert.alert("Erro", "Não foi possível salvar no Supabase.");
+      }
 
       Alert.alert("Treino salvo!", "Seu treino foi adicionado com sucesso.");
 
@@ -74,14 +104,14 @@ export default function WorkoutCreateScreen({ navigation }) {
       // Volta para a tela de seleção
       navigation.navigate("WorkoutSelect");
     } catch (err) {
+      console.error(err);
       Alert.alert("Erro", "Não foi possível salvar o treino.");
     }
   };
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Criar novo treino</Text>
-<Navbar/>
+      <Navbar />
       <TextInput
         placeholder="Nome do treino"
         placeholderTextColor="#aaa"

@@ -1,8 +1,14 @@
-import React from 'react';
-import { TextInput, Text, View } from 'react-native';
-import styles from '../styles/inputStyle';
+import React from "react";
+import { TextInput, Text, View } from "react-native";
+import styles from "../styles/inputStyle";
 
-export default function Input({ label, placeholder, secureTextEntry = false }) {
+export default function Input({
+  label,
+  placeholder,
+  secureTextEntry = false,
+  value,
+  onChangeText,
+}) {
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
@@ -11,6 +17,8 @@ export default function Input({ label, placeholder, secureTextEntry = false }) {
         placeholder={placeholder}
         placeholderTextColor="#aaa"
         secureTextEntry={secureTextEntry}
+        value={value}
+        onChangeText={onChangeText}
       />
     </View>
   );
