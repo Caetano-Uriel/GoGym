@@ -11,10 +11,7 @@ export default function WorkoutSelectScreen({ navigation }) {
   const fetchWorkouts = async () => {
     console.log("Buscando treinos...");
     try {
-      const { data, error } = await supabase
-        .from("treinos")
-        .select("*")
-        .order("ordem", { ascending: true });
+      const { data, error } = await supabase.from("treinos").select("*");
 
       if (error) {
         console.error("Erro ao buscar do Supabase:", error);
@@ -147,19 +144,7 @@ export default function WorkoutSelectScreen({ navigation }) {
     <View style={styles.itemContainer}>
       <Text style={styles.itemText}>{item.nome}</Text>
       <View style={styles.buttonGroup}>
-        <Button
-          title="↑"
-          variant="reorder"
-          onPress={() => moveItem(index, index - 1)}
-          disabled={index === 0}
-        />
-        <Button
-          title="↓"
-          variant="reorder"
-          onPress={() => moveItem(index, index + 1)}
-          disabled={index === workouts.length - 1}
-          style={styles.buttonInGroup}
-        />
+  
         <Button
           title="X"
           variant="delete"

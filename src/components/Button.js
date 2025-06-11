@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import styles from "../styles/buttonStyle";
+import styles from "../styles/components";
 
 export default function Button({ icon, title, variant = "default", onPress }) {
   const isBordaBranca = variant === "bordaBranca";
@@ -17,6 +17,7 @@ export default function Button({ icon, title, variant = "default", onPress }) {
     verde: ["#32CD32", "#228B22"],
     reorder: ["#444", "#444"],
     delete: ["#e63946", "#d62828"],
+    vermelho: ["#e63946", "#d62828"],
   };
 
   const gradientColors = variants[variant] || ["#ffffff", "#ffffff"];

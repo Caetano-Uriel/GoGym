@@ -66,13 +66,12 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   buttonGroup: {
-    flexDirection: "row",
-    //gap: 10, // caso gap não funcione em seu RN, use marginLeft em cada botão
-    justifyContent: "flex-end",
+    flexDirection: "row",          // já está certo
+    justifyContent: "flex-end",    // empurra os botões para a direita
     alignItems: "center",
   },
   buttonInGroup: {
-    marginLeft: 8,
+    marginLeft: 8,                 // espaçamento entre eles
   },
   emptyListText:{
     color: "#fff",

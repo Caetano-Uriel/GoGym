@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput, Text, View } from "react-native";
-import styles from "../styles/inputStyle";
+import styles from "../styles/components";
 
 export default function Input({
   label,
@@ -10,7 +10,7 @@ export default function Input({
   onChangeText,
 }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.inputContainer}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
         style={styles.input}

@@ -7,11 +7,25 @@ export const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    paddingTop:100,
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 20,
+  },
+  input: {
+    width: "100%",
+    height: 48,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    backgroundColor: "#1f1f1f",
+    color: "#fff",
+    fontSize: 16,
+    marginBottom: 12,
+  },
+  subtitle: {
+    color: "#fff",
+    fontSize: 16,
+    marginVertical: 10,
   },
   item: {
     backgroundColor: "#2a2a2a",
@@ -21,19 +35,6 @@ export const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 15,
     justifyContent: "space-between",
-  },
-  subtitle: {
-    color: "#fff",
-    fontSize: 16,
-    marginBottom: 10,
-  },input: {
-    width: "100%",
-    height: 48,
-    paddingHorizontal: 16,
-    borderRadius: 8,
-    backgroundColor: "#1f1f1f",
-    color: "#fff",
-    fontSize: 16,
   },
   itemText: {
     color: "#fff",
@@ -54,16 +55,57 @@ export const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: "#FFA500",
   },
-  botao: {
-    backgroundColor: "#00C851",
-    paddingVertical: 12,
-    borderRadius: 10,
+  footerButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginTop: 20,
+  },
+  footerButton: {
+    flex: 1,
+    padding: 16,
+    borderRadius: 10,
+    backgroundColor: "#6C63FF", // ou o estilo que quiser
     alignItems: "center",
   },
-  botaoTexto: {
+
+  // ===== Modal =====
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContent: {
+    width: "85%",
+    backgroundColor: "#222",
+    borderRadius: 12,
+    padding: 20,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.6,
+    shadowRadius: 8,
+    elevation: 10, // Android shadow
+  },
+  modalTitle: {
     color: "#fff",
+    fontSize: 20,
     fontWeight: "bold",
-    fontSize: 16,
+    marginBottom: 16,
+  },
+  modalInput: {
+    borderWidth: 1,
+    borderColor: "#444",
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    color: "#fff",
+    marginBottom: 12,
+    backgroundColor: "#1f1f1f",
+  },
+  modalButtonGroup: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 16,
   },
 });
