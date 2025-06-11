@@ -1,18 +1,11 @@
 // LoginScreen.js
-import React, { useState, useContext } from "react";
-import {
-  View,
-  Text,
-  ImageBackground,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
+import React, { useState } from "react";
+import { View, Text, ImageBackground, Alert } from "react-native";
 import styles from "../styles/loginStyle";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { supabase } from "../../supabase";
 import { useNavigation } from "@react-navigation/native";
-import { TextInput } from "react-native";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");

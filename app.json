@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "GoGym",
-    "slug": "GoGym",
+    "slug": "gogym",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,6 +23,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d5ac1ebd-4cb7-43c6-b04d-1856d613fc78"
+      }
+    },
+    "owner": "diegoandre"
   }
 }

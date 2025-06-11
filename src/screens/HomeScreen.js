@@ -14,7 +14,8 @@ export default function HomeScreen() {
     const fetchUser = async () => {
       const { data, error } = await supabase.auth.getUser();
       if (data?.user) {
-        setUserEmail(data.user.email);
+        const nome = data.user.user_metadata?.nome;
+        setUserEmail(nome || data.user.email); // mostra o nome se existir
       }
     };
 
@@ -44,9 +45,20 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.buttonsContainer}>
-        <Button title="Treino" onPress={() => navigation.navigate("WorkoutSelect")} />
-        <Button title="Ranking" variant="roxo" onPress={() => navigation.navigate("Ranking")} />
-        <Button title="Amigos" variant="roxo" onPress={() => navigation.navigate("Friends")} />
+        <Button
+          title="Treino"
+          onPress={() => navigation.navigate("WorkoutSelect")}
+        />
+        <Button
+          title="Ranking"
+          variant="roxo"
+          onPress={() => navigation.navigate("Ranking")}
+        />
+        <Button
+          title="Amigos"
+          variant="roxo"
+          onPress={() => navigation.navigate("Friends")}
+        />
         <Button title="Dieta" onPress={() => navigation.navigate("Diet")} />
       </View>
 
