@@ -7,7 +7,7 @@ import { supabase } from "../../supabase";
 
 export default function WorkoutSelectScreen({ navigation }) {
   const [workouts, setWorkouts] = useState([]);
-
+  
   const fetchWorkouts = async () => {
     console.log("Buscando treinos...");
     try {
@@ -36,31 +36,6 @@ export default function WorkoutSelectScreen({ navigation }) {
       fetchWorkouts();
     }, [])
   );
-
-  const moveItem = async (fromIndex, toIndex) => {
-    if (
-      toIndex < 0 ||
-      toIndex >= workouts.length ||
-      fromIndex < 0 ||
-      fromIndex >= workouts.length
-    ) {
-      console.warn("Tentativa de mover item para índice inválido.");
-      return;
-    }
-
-    const newList = [...workouts];
-    const item = newList.splice(fromIndex, 1)[0];
-    newList.splice(toIndex, 0, item);
-    setWorkouts(newList);
-
-    try {
-      await salvarTreinos(newList);
-      console.log("Ordem dos treinos salva.");
-    } catch (error) {
-      console.error("Erro ao salvar a nova ordem dos treinos:", error);
-      Alert.alert("Erro", "Não foi possível salvar a nova ordem dos treinos.");
-    }
-  };
 
   const salvarTreinos = async (novaLista) => {
     const updates = novaLista.map((treino, index) => ({
@@ -142,9 +117,13 @@ export default function WorkoutSelectScreen({ navigation }) {
 
   const renderItem = ({ item, index }) => (
     <View style={styles.itemContainer}>
-      <Text style={styles.itemText}>{item.nome}</Text>
+      <Text
+        style={styles.itemText}
+        onPress={() => navigation.navigate("Workout", { treino: item })}
+      >
+        {item.nome}
+      </Text>
       <View style={styles.buttonGroup}>
-  
         <Button
           title="X"
           variant="delete"

@@ -22,6 +22,11 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 12,
   },
+  inputsContainer: {
+    marginTop: 10,
+    paddingHorizontal: 10,
+  },
+
   subtitle: {
     color: "#fff",
     fontSize: 16,

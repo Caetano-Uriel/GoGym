@@ -45,10 +45,19 @@ export default function WorkoutCreateScreen({ navigation }) {
     const copia = [...exercicios];
     const index = copia.findIndex((ex) => ex.nome === exercicioNome);
     if (index !== -1) {
-      copia[index].selecionado = !copia[index].selecionado;
+      const exercicio = copia[index];
+      exercicio.selecionado = !exercicio.selecionado;
+      if (exercicio.selecionado) {
+        exercicio.repeticoes = "";
+        exercicio.series = "";
+      } else {
+        delete exercicio.repeticoes;
+        delete exercicio.series;
+      }
       setExercicios(copia);
     }
   };
+
   const adicionarExercicio = async () => {
     if (!novoExercicio.trim() || !grupoMuscular.trim()) {
       return Alert.alert("Erro", "Preencha todos os campos.");
@@ -87,11 +96,30 @@ export default function WorkoutCreateScreen({ navigation }) {
     setModalVisible(false);
     carregarExercicios();
   };
+  const handleExerciseInputChange = (workoutIndex, field, value) => {
+    const updated = [...workouts];
+    const exercicio = updated[workoutIndex].exercicios[0]; // ajustável para múltiplos
+
+    if (typeof exercicio === "string") {
+      updated[workoutIndex].exercicios[0] = { nome: exercicio, [field]: value };
+    } else {
+      updated[workoutIndex].exercicios[0] = {
+        ...exercicio,
+        [field]: value,
+      };
+    }
+
+    setWorkouts(updated);
+  };
 
   const salvarTreino = async () => {
     const selecionados = exercicios
       .filter((ex) => ex.selecionado)
-      .map((ex) => ex.nome);
+      .map(({ nome, repeticoes, series }) => ({
+        nome,
+        repeticoes,
+        series: series || null, // para diferenciar tempo
+      }));
 
     if (!nomeTreino.trim()) {
       return Alert.alert("Nome obrigatório", "Dê um nome ao seu treino.");
@@ -164,18 +192,55 @@ export default function WorkoutCreateScreen({ navigation }) {
         )}
         keyExtractor={(item) => item.nome}
         renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() => toggleExercicio(item.nome)}
-          >
-            <Ionicons name={item.icone || "barbell"} size={24} color="#fff" />
-            <Text style={styles.itemText}>{item.nome}</Text>
-            <View
-              style={
-                item.selecionado ? styles.checkboxSelected : styles.checkbox
-              }
-            />
-          </TouchableOpacity>
+          <View style={styles.itemWrapper}>
+            <TouchableOpacity
+              style={styles.item}
+              onPress={() => toggleExercicio(item.nome)}
+            >
+              <Ionicons name={item.icone || "barbell"} size={24} color="#fff" />
+              <Text style={styles.itemText}>{item.nome}</Text>
+              <View
+                style={
+                  item.selecionado ? styles.checkboxSelected : styles.checkbox
+                }
+              />
+            </TouchableOpacity>
+
+            {item.selecionado && (
+              <View style={styles.inputsContainer}>
+                <TextInput
+                  placeholder="Repetições ou tempo"
+                  placeholderTextColor="#aaa"
+                  style={styles.input}
+                  value={item.repeticoes}
+                  keyboardType="numeric"
+                  onChangeText={(value) => {
+                    const atualizados = [...exercicios];
+                    const i = atualizados.findIndex(
+                      (ex) => ex.nome === item.nome
+                    );
+                    atualizados[i].repeticoes = value;
+                    setExercicios(atualizados);
+                  }}
+                />
+                <TextInput
+                  placeholder="Séries (se nulo, Primeiro campo será considerado tempo)"
+                  placeholderTextColor="#aaa"
+                  style={styles.input}
+                  value={item.series}
+                  keyboardType="numeric"
+                  onChangeText={(value) => {
+                    const atualizados = [...exercicios];
+                    const i = atualizados.findIndex(
+                      (ex) => ex.nome === item.nome
+                    );
+                    atualizados[i].series = value;
+                    setExercicios(atualizados);
+                  }}
+                />
+              </View>
+            )}
+          </View>
         )}
       />
 
