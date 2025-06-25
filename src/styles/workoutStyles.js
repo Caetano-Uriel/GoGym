@@ -1,0 +1,82 @@
+import { StyleSheet } from "react-native";
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#f2f2f2",
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 4,
+  },
+  progress: {
+    fontSize: 14,
+    marginBottom: 16,
+    color: "#888",
+  },
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 16,
+    alignItems: "center",
+    elevation: 2,
+  },
+  exercise: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  subinfo: {
+    fontSize: 14,
+    color: "#444",
+    marginBottom: 12,
+  },
+  image: {
+    width: 180,
+    height: 180,
+    resizeMode: "contain",
+    marginBottom: 12,
+  },
+  setInfo: {
+    fontSize: 16,
+    marginBottom: 16,
+  },
+  actions: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    marginBottom: 10,
+  },
+  actionBtn: {
+    flex: 1,
+    padding: 8,
+    backgroundColor: "#eee",
+    marginHorizontal: 4,
+    alignItems: "center",
+    borderRadius: 6,
+  },
+  altBtn: {
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    marginTop: 8,
+  },
+  footer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginTop: 24,
+  },
+  doneBtn: {
+    backgroundColor: "#0a0",
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 100,
+  },
+  doneText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+});
