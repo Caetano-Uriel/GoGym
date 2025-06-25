@@ -38,7 +38,6 @@ export default function RegisterScreen() {
 
       if (result.type === "success") {
         Alert.alert("Sucesso", "Login com Google realizado!");
-        // Aqui você pode navegar para a tela principal
       } else {
         console.log("Login cancelado ou falhou:", result);
       }
@@ -63,7 +62,7 @@ export default function RegisterScreen() {
       password: senha,
       options: {
         data: {
-          nome: nome, // Isso vai para user_metadata
+          nome: nome, 
         },
       },
     });

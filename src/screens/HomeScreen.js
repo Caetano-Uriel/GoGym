@@ -1,4 +1,3 @@
-// HomeScreen.js
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, Alert } from "react-native";
 import Button from "../components/Button";
@@ -15,7 +14,7 @@ export default function HomeScreen() {
       const { data, error } = await supabase.auth.getUser();
       if (data?.user) {
         const nome = data.user.user_metadata?.nome;
-        setUserEmail(nome || data.user.email); // mostra o nome se existir
+        setUserEmail(nome || data.user.email);
       }
     };
 

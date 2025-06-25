@@ -1,4 +1,3 @@
-// LoginScreen.js
 import React, { useState } from "react";
 import { View, Text, ImageBackground, Alert } from "react-native";
 import styles from "../styles/loginStyle";
