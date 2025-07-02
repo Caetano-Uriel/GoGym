@@ -23,8 +23,20 @@ export const styles = StyleSheet.create({
     marginBottom: 12,
   },
   inputsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 8,
     marginTop: 10,
-    paddingHorizontal: 10,
+  },
+
+  inputSmall: {
+    flex: 1,
+    height: 48,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    backgroundColor: "#1f1f1f",
+    color: "#fff",
+    fontSize: 16,
   },
 
   subtitle: {
@@ -35,12 +47,18 @@ export const styles = StyleSheet.create({
   item: {
     backgroundColor: "#2a2a2a",
     borderRadius: 10,
-    flexDirection: "row",
-    alignItems: "center",
     padding: 15,
     marginBottom: 15,
-    justifyContent: "space-between",
+    flexDirection: "column",
   },
+
+  itemHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: 10,
+  },
+
   itemText: {
     color: "#fff",
     fontSize: 16,
@@ -53,7 +71,9 @@ export const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 2,
     borderColor: "#fff",
+    marginRight: 12,
   },
+
   checkboxSelected: {
     width: 20,
     height: 20,
@@ -113,4 +133,28 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: 16,
   },
+  modalLabel: {
+  color: "#fff",
+  fontSize: 16,
+  marginBottom: 8,
+  marginTop: 8,
+},
+
+modalPickerWrapper: {
+  borderWidth: 1,
+  borderColor: "#444",
+  borderRadius: 8,
+  backgroundColor: "#1f1f1f",
+  marginBottom: 12,
+  overflow: "hidden",
+},
+
+modalPicker: {
+  color: "#fff",
+  borderRadius: 8,
+  borderColor: "#444",
+  backgroundColor: "#1f1f1f",
+  height: 50,
+},
+
 });

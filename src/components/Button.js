@@ -6,7 +6,8 @@ import styles from "../styles/components";
 export default function Button({ icon, title, variant = "default", onPress }) {
   const isBordaBranca = variant === "bordaBranca";
   const isIconOnly = variant === "iconOnly";
-  const isCompact = variant === "reorder" || variant === "delete";
+  const isCompact =
+    variant === "reorder" || variant === "delete" || variant === "save";
 
   const variants = {
     default: ["#fca311", "#ffba08"],
@@ -15,6 +16,7 @@ export default function Button({ icon, title, variant = "default", onPress }) {
     rosa: ["#ff6f91", "#ff9472"],
     roxo: ["#620ea7ce", "#620ea7ce"],
     verde: ["#32CD32", "#228B22"],
+    save: ["#32CD32", "#228B22"],
     reorder: ["#444", "#444"],
     delete: ["#e63946", "#d62828"],
     vermelho: ["#e63946", "#d62828"],

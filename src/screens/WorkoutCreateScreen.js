@@ -13,6 +13,7 @@ import { styles } from "../styles/workoutCreateStyles";
 import Button from "../components/Button";
 import Navbar from "../components/Navbar";
 import { supabase } from "../../supabase";
+import { Picker } from "@react-native-picker/picker";
 
 export default function WorkoutCreateScreen({ navigation }) {
   const [nomeTreino, setNomeTreino] = useState("");
@@ -57,7 +58,20 @@ export default function WorkoutCreateScreen({ navigation }) {
       setExercicios(copia);
     }
   };
-
+  const getIconePorGrupo = (grupo) => {
+    switch (grupo.toLowerCase()) {
+      case "peito":
+        return "fitness-outline";
+      case "costas":
+        return "body-outline";
+      case "pernas":
+        return "walk-outline";
+      case "cardio":
+        return "heart-outline";
+      default:
+        return "barbell";
+    }
+  };
   const adicionarExercicio = async () => {
     if (!novoExercicio.trim() || !grupoMuscular.trim()) {
       return Alert.alert("Erro", "Preencha todos os campos.");
@@ -79,6 +93,7 @@ export default function WorkoutCreateScreen({ navigation }) {
         {
           nome: novoExercicio,
           grupo_muscular: grupoMuscular,
+          icone: getIconePorGrupo(grupoMuscular), // <-- aqui
           user_id: user.id,
         },
       ])
@@ -193,53 +208,60 @@ export default function WorkoutCreateScreen({ navigation }) {
         keyExtractor={(item) => item.nome}
         renderItem={({ item }) => (
           <View style={styles.itemWrapper}>
-            <TouchableOpacity
-              style={styles.item}
-              onPress={() => toggleExercicio(item.nome)}
-            >
-              <Ionicons name={item.icone || "barbell"} size={24} color="#fff" />
-              <Text style={styles.itemText}>{item.nome}</Text>
-              <View
-                style={
-                  item.selecionado ? styles.checkboxSelected : styles.checkbox
-                }
-              />
-            </TouchableOpacity>
+            <View style={styles.item}>
+              <TouchableOpacity onPress={() => toggleExercicio(item.nome)}>
+                <View style={styles.itemHeader}>
+                  <View
+                    style={
+                      item.selecionado
+                        ? styles.checkboxSelected
+                        : styles.checkbox
+                    }
+                  />
+                  <Ionicons
+                    name={item.icone || "barbell"}
+                    size={24}
+                    color="#fff"
+                  />
+                  <Text style={styles.itemText}>{item.nome}</Text>
+                </View>
+              </TouchableOpacity>
 
-            {item.selecionado && (
-              <View style={styles.inputsContainer}>
-                <TextInput
-                  placeholder="Repetições ou tempo"
-                  placeholderTextColor="#aaa"
-                  style={styles.input}
-                  value={item.repeticoes}
-                  keyboardType="numeric"
-                  onChangeText={(value) => {
-                    const atualizados = [...exercicios];
-                    const i = atualizados.findIndex(
-                      (ex) => ex.nome === item.nome
-                    );
-                    atualizados[i].repeticoes = value;
-                    setExercicios(atualizados);
-                  }}
-                />
-                <TextInput
-                  placeholder="Séries (se nulo, Primeiro campo será considerado tempo)"
-                  placeholderTextColor="#aaa"
-                  style={styles.input}
-                  value={item.series}
-                  keyboardType="numeric"
-                  onChangeText={(value) => {
-                    const atualizados = [...exercicios];
-                    const i = atualizados.findIndex(
-                      (ex) => ex.nome === item.nome
-                    );
-                    atualizados[i].series = value;
-                    setExercicios(atualizados);
-                  }}
-                />
-              </View>
-            )}
+              {item.selecionado && (
+                <View style={styles.inputsContainer}>
+                  <TextInput
+                    placeholder="Repetições ou tempo"
+                    placeholderTextColor="#aaa"
+                    style={styles.inputSmall}
+                    value={item.repeticoes}
+                    keyboardType="numeric"
+                    onChangeText={(value) => {
+                      const atualizados = [...exercicios];
+                      const i = atualizados.findIndex(
+                        (ex) => ex.nome === item.nome
+                      );
+                      atualizados[i].repeticoes = value;
+                      setExercicios(atualizados);
+                    }}
+                  />
+                  <TextInput
+                    placeholder="Séries"
+                    placeholderTextColor="#aaa"
+                    style={styles.inputSmall}
+                    value={item.series}
+                    keyboardType="numeric"
+                    onChangeText={(value) => {
+                      const atualizados = [...exercicios];
+                      const i = atualizados.findIndex(
+                        (ex) => ex.nome === item.nome
+                      );
+                      atualizados[i].series = value;
+                      setExercicios(atualizados);
+                    }}
+                  />
+                </View>
+              )}
+            </View>
           </View>
         )}
       />
@@ -254,14 +276,23 @@ export default function WorkoutCreateScreen({ navigation }) {
               style={styles.modalInput}
               value={novoExercicio}
               onChangeText={setNovoExercicio}
-            />{" "}
-            <TextInput
-              placeholder="Grupo muscular (peito, costas...)"
-              placeholderTextColor="#777"
-              style={styles.modalInput}
-              value={grupoMuscular}
-              onChangeText={setGrupoMuscular}
             />
+            <Text style={styles.modalLabel}>Grupo Muscular</Text>
+            <View style={styles.modalPickerWrapper}>
+              <Picker
+                selectedValue={grupoMuscular}
+                onValueChange={(itemValue) => setGrupoMuscular(itemValue)}
+                style={styles.modalPicker}
+                dropdownIconColor="#fff"
+              >
+                <Picker.Item label="Selecione..." value="" />
+                <Picker.Item label="Peito" value="peito" />
+                <Picker.Item label="Costas" value="costas" />
+                <Picker.Item label="Pernas" value="pernas" />
+                <Picker.Item label="Cardio" value="cardio" />
+              </Picker>
+            </View>
+
             <View style={styles.modalButtonGroup}>
               <Button
                 title="Cancelar"

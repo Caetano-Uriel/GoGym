@@ -37,20 +37,7 @@ export default function WorkoutSelectScreen({ navigation }) {
     }, [])
   );
 
-  const salvarTreinos = async (novaLista) => {
-    const updates = novaLista.map((treino, index) => ({
-      id: treino.id,
-      ordem: index,
-    }));
-
-    const { error } = await supabase
-      .from("treinos")
-      .upsert(updates, { onConflict: ["id"] });
-
-    if (error) {
-      throw error;
-    }
-  };
+  
 
   const confirmarExclusao = async (indexToDelete) => {
     const treino = workouts[indexToDelete];

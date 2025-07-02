@@ -10,6 +10,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 import RankingScreen from "./src/screens/RankingScreen";
 import DietScreen from "./src/screens/DietScreen";
 import FriendsScreen from "./src/screens/FriendsScreen";
+import WorkoutScreen from "./src/screens/WorkoutScreen";
 import WorkoutSelectScreen from "./src/screens/WorkoutSelectScreen";
 import WorkoutCreateScreen from "./src/screens/WorkoutCreateScreen";
 import * as AuthSession from "expo-auth-session";
@@ -28,6 +29,11 @@ function AuthenticatedRoutes() {
         name="WorkoutSelect"
         component={WorkoutSelectScreen}
         options={{ title: "Treinos" }}
+      />
+      <Stack.Screen
+        name="Workout"
+        component={WorkoutScreen}
+        options={{ title: "Treino" }}
       />
       <Stack.Screen
         name="WorkoutCreate"
