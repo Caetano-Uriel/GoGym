@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  // Estilo base para todos os botões
   buttonBase: {
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -18,7 +17,6 @@ export default StyleSheet.create({
     fontSize: 16,
   },
 
-  // Variantes padrão
   defaultButton: {
     backgroundColor: "#555",
   },
@@ -29,7 +27,6 @@ export default StyleSheet.create({
     backgroundColor: "#6c757d",
   },
 
-  // Botão de login
   loginButton: {
     height: 48,
     backgroundColor: "#f8da11",
@@ -46,7 +43,6 @@ export default StyleSheet.create({
     fontWeight: "bold",
   },
 
-  // Botão com gradiente
   gradientButtonWrapper: {
     width: "47%",
   },

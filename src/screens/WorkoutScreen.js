@@ -57,7 +57,7 @@ export default function WorkoutScreen() {
           source={
             exercicio.imagem
               ? { uri: exercicio.imagem }
-              : require("../../assets/placeholder.png") // imagem local de fallback
+              : require("../../assets/placeholder.png")
           }
           style={styles.image}
         />
@@ -125,12 +125,10 @@ export default function WorkoutScreen() {
                     copia[currentIndex].carga = novaCarga;
                     copia[currentIndex].descanso = descanso;
 
-                    // Serializa de volta para strings JSON:
                     const copiaStringificada = copia.map((ex) =>
                       JSON.stringify(ex)
                     );
 
-                    // Atualiza no Supabase
                     const { data: userData, error: userError } =
                       await supabase.auth.getUser();
                     if (userError || !userData?.user) {
@@ -174,7 +172,7 @@ export default function WorkoutScreen() {
             style={[styles.doneBtn, { backgroundColor: "#0a0" }]}
             onPress={() => {
               Alert.alert("Treino concluído!", "Parabéns!");
-              navigation.navigate("Home"); // ou outro destino
+              navigation.navigate("Home"); 
             }}
           >
             <Text style={styles.doneText}>Finalizar</Text>

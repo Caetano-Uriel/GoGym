@@ -1,4 +1,3 @@
-// App.js
 import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -79,7 +78,7 @@ function UnauthenticatedRoutes() {
 function MainRoutes() {
   const { session, loading } = useContext(AuthContext);
 
-  if (loading) return null; // ou um loading spinner
+  if (loading) return null;
 
   return session ? <AuthenticatedRoutes /> : <UnauthenticatedRoutes />;
 }

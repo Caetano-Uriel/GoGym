@@ -1,8 +1,6 @@
-// styles/components.js
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  // ===== Button =====
   buttonBase: {
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -19,7 +17,6 @@ export default StyleSheet.create({
     fontSize: 16,
   },
 
-  // Variantes padrão
   defaultButton: {
     backgroundColor: "#555",
   },
@@ -30,7 +27,6 @@ export default StyleSheet.create({
     backgroundColor: "#6c757d",
   },
 
-  // Botão de login
   loginButton: {
     height: 48,
     backgroundColor: "#f8da11",
@@ -47,7 +43,6 @@ export default StyleSheet.create({
     fontWeight: "bold",
   },
 
-  // Botão com gradiente
   gradientButtonWrapper: {
     width: "47%",
   },
@@ -81,7 +76,6 @@ export default StyleSheet.create({
     marginLeft: 10,
   },
 
-  // ===== Input =====
   inputContainer: {
     width: "100%",
     marginBottom: 16,
@@ -101,7 +95,6 @@ export default StyleSheet.create({
     color: "#fff",
     fontSize: 16,
   },
-  // ===== Navbar (Search) =====
   navbarContainer: {
     paddingHorizontal: 16,
     marginVertical: 8,
@@ -109,10 +102,9 @@ export default StyleSheet.create({
   searchWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    // fundo escuro
     borderWidth: 1,
-    borderColor: "#333", // borda mais suave
-    placeholderTextColor: "#fff", // placeholder branco
+    borderColor: "#333", 
+    placeholderTextColor: "#fff",
     borderRadius: 12,
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -120,7 +112,7 @@ export default StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 16,
-    color: "#fff", // texto branco
-    paddingVertical: 0, // alinha melhor verticalmente
+    color: "#fff", 
+    paddingVertical: 0, 
   },
 });

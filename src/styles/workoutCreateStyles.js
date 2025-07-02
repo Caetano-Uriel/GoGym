@@ -90,11 +90,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     borderRadius: 10,
-    backgroundColor: "#6C63FF", // ou o estilo que quiser
+    backgroundColor: "#6C63FF", 
     alignItems: "center",
   },
 
-  // ===== Modal =====
   modalOverlay: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.6)",
@@ -110,7 +109,7 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.6,
     shadowRadius: 8,
-    elevation: 10, // Android shadow
+    elevation: 10, 
   },
   modalTitle: {
     color: "#fff",

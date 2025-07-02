@@ -66,12 +66,12 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   buttonGroup: {
-    flexDirection: "row",          // já está certo
-    justifyContent: "flex-end",    // empurra os botões para a direita
+    flexDirection: "row",        
+    justifyContent: "flex-end",    
     alignItems: "center",
   },
   buttonInGroup: {
-    marginLeft: 8,                 // espaçamento entre eles
+    marginLeft: 8,                
   },
   emptyListText:{
     color: "#fff",

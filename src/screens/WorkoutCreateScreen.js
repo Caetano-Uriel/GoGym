@@ -93,7 +93,7 @@ export default function WorkoutCreateScreen({ navigation }) {
         {
           nome: novoExercicio,
           grupo_muscular: grupoMuscular,
-          icone: getIconePorGrupo(grupoMuscular), // <-- aqui
+          icone: getIconePorGrupo(grupoMuscular), 
           user_id: user.id,
         },
       ])
@@ -113,7 +113,7 @@ export default function WorkoutCreateScreen({ navigation }) {
   };
   const handleExerciseInputChange = (workoutIndex, field, value) => {
     const updated = [...workouts];
-    const exercicio = updated[workoutIndex].exercicios[0]; // ajustável para múltiplos
+    const exercicio = updated[workoutIndex].exercicios[0]; 
 
     if (typeof exercicio === "string") {
       updated[workoutIndex].exercicios[0] = { nome: exercicio, [field]: value };
@@ -133,7 +133,7 @@ export default function WorkoutCreateScreen({ navigation }) {
       .map(({ nome, repeticoes, series }) => ({
         nome,
         repeticoes,
-        series: series || null, // para diferenciar tempo
+        series: series || null, 
       }));
 
     if (!nomeTreino.trim()) {

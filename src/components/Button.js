@@ -24,7 +24,6 @@ export default function Button({ icon, title, variant = "default", onPress }) {
 
   const gradientColors = variants[variant] || ["#ffffff", "#ffffff"];
 
-  // Novo estilo compacto
   const compactStyle = {
     paddingVertical: 6,
     paddingHorizontal: 12,
@@ -48,7 +47,7 @@ export default function Button({ icon, title, variant = "default", onPress }) {
         colors={gradientColors}
         style={[
           styles.gradientButton,
-          isCompact && compactStyle, // Aplica se for compacto
+          isCompact && compactStyle, 
         ]}
       >
         {icon}
